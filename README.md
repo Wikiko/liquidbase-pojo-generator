@@ -1,0 +1,1 @@
+A project for automatize pojo generate using liquidbase.

@@ -1,0 +1,7 @@
+public class {{class_name}} {
+    
+    {% for attribute in attributes %}
+        private Long {{attribute.name}}
+    {% endfor %}
+
+}

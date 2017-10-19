@@ -12,7 +12,7 @@ public class {{class_name | title}} {
         return {{attribute.name}};
     }
     
-    public set{{attribute.name | title}}({{attribute.type}} {{attribute.name}}){
+    public void set{{attribute.name | title}}({{attribute.type}} {{attribute.name}}){
         this.{{attribute.name}} = {{attribute.name}};
     }
 {% endfor %}

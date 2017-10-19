@@ -3,9 +3,9 @@ public class Person {
 
     private Long id;
 
-    private String firstname;
+    private String firstName;
 
-    private String lastname;
+    private String lastName;
 
     private String state;
 
@@ -18,31 +18,31 @@ public class Person {
         return id;
     }
     
-    public setId(Long id){
+    public void setId(Long id){
         this.id = id;
     }
 
     public String getFirstname(){
-        return firstname;
+        return firstName;
     }
     
-    public setFirstname(String firstname){
-        this.firstname = firstname;
+    public void setFirstname(String firstName){
+        this.firstName = firstName;
     }
 
     public String getLastname(){
-        return lastname;
+        return lastName;
     }
     
-    public setLastname(String lastname){
-        this.lastname = lastname;
+    public void setLastname(String lastName){
+        this.lastName = lastName;
     }
 
     public String getState(){
         return state;
     }
     
-    public setState(String state){
+    public void setState(String state){
         this.state = state;
     }
 

@@ -38,21 +38,35 @@ def make_attribute(original_dictionary):
         'name': original_dictionary.get('name')
     }
     
+def make_class_name(original_dictionary):
+    return remove_last_s(original_dictionary.get('tableName'))
+    
 changeSets = root.findall(
     element_str_formater('changeSet', namespace),
     namespace
 )
 
-def get_attributes():
+def get_all():
     for changeSet in changeSets:
         for element in changeSet:
             if 'createTable' in element.tag:
-                columns = element.findall(element_str_formater('column', namespace), namespace)
-                return tuple(make_attribute(column.attrib) for column in columns)
                 
+                columns = element.findall(
+                    element_str_formater('column', namespace),
+                    namespace
+                )
+                return {
+                    'class_name': make_class_name(element.attrib),
+                    'attributes': tuple(
+                        make_attribute(column.attrib) for column in columns
+                    )
+                }
+                
+
 
 with open('template') as file:
     template = Template(file.read())
     with open('teste.java', 'w') as file_to_write:
-        template_rendered = template.render(class_name='person', attributes=get_attributes())
+        teste = get_all()
+        template_rendered = template.render(class_name=teste.get('class_name'), attributes=teste.get('attributes'))
         file_to_write.write(template_rendered)

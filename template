@@ -1,7 +1,20 @@
-public class {{class_name}} {
+public class {{class_name | title}} {
     
-    {% for attribute in attributes %}
-        private Long {{attribute.name}}
-    {% endfor %}
+{% for attribute in attributes %}
+    private {{attribute.type}} {{attribute.name}};
+{% endfor %}
+    
+    public {{class_name | title}}(){
+    }
+    
+{% for attribute in attributes %}
+    public {{attribute.type}} get{{attribute.name | title}}(){
+        return {{attribute.name}};
+    }
+    
+    public set{{attribute.name | title}}({{attribute.type}} {{attribute.name}}){
+        this.{{attribute.name}} = {{attribute.name}};
+    }
+{% endfor %}
 
 }
